@@ -3,76 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Snake</title>
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #222;
+		}
+		canvas#game{
+			position: absolute;
+			transform: translate(-50%,-50%);
+			top: 50%;
+			left: 50%;
+		}
+	</style>	
 </head>
 <body>
-	<canvas id="snake" width="800" height="600"></canvas>
-
-	<script type="text/javascript">
-	var stage;
-	var ctx;
-
-	const SPEED = 2;
-
-	var vx = vy = 0;
-	var px = py = 10; 
-
-	var tail = 5;
-	
-		window.onload = function(){
-			stage = document.getElementById("snake");
-			ctx = stage.getContext('2d');
-
-			document.addEventListener('keydown', keyPush);
-
-			setInterval(game,1000/15);
-
-		}
-
-		function keyPush(event){
-			var key = event.keyCode;
-
-			switch(key){
-				case 37:
-						vx-=SPEED; vy=0;
-					break;
-				case 38:
-						vx=0; vy-=SPEED;
-					break;
-				case 39:
-						vx+=SPEED; vy=0;
-					break;
-				case 40:
-						vx=0; vy+=SPEED;
-					break;
-				default:
-					break;
-			}
-		}
-
-		function game(){
-
-			if (px >= stage.width){
-				px = 0;
-			}else if(px <= -10){
-				px = stage.width;
-			}
-			if (py >= stage.height){
-				py = 0;
-			}else if(py <= -10){
-				py = stage.height;
-			}
-
-			px += vx;
-			py += vy;
-
-			ctx.fillStyle = 'Black';
-			ctx.fillRect(0,0,stage.width,stage.height);
-
-			ctx.fillStyle = 'White';
-			ctx.fillRect(px,py,10,10);
-		}
-
-	</script>
+	<canvas id="game" width="600" height="600"></canvas>
+	<script type="text/javascript" src="snake.js"></script>
 </body>
 </html>
